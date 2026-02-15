@@ -11,7 +11,7 @@ var energyUpgs = {
 		cost(x) { 
 			if (tmp.sup) x = x.sub(tmp.sup.upgs[3].eff||0).sub(tmp.sup.upgs[6].eff||0);
 			if (x.lte(0)) return new Decimal(1);
-			return Decimal.pow(1.01, x.sub(1).max(0).pow(0.02).plus(1)) 
+			return Decimal.pow(1.0001, x.sub(1).max(0).pow(0.00000000000002).plus(1)) 
 		},
 		target(r) {
 			if (r.lt(1)) return new Decimal(0);
@@ -29,11 +29,11 @@ var energyUpgs = {
 	},
 	2: {
 		title: "Self-Charging Batteries",
-		display() { return "Energy increases its exponent by "+format(tmp.en.upgs[2].gainPer)+"." },
+		display() { return "Energy increases its sigma by "+format(tmp.en.upgs[2].gainPer)+"." },
 		cost(x) { 
 			if (tmp.sup) x = x.sub(tmp.sup.upgs[3].eff).sub(tmp.sup.upgs[6].eff||0);
 			if (tmp.skills) x = x.times(Decimal.sub(1, tmp.skills[1].eff))
-			return Decimal.pow(5, x.lt(0)?x:(x.pow(2.5))).times(1e4) 
+			return Decimal.pow(1.05, x.lt(0)?x:(x.pow(0.0025))).times(1e4) 
 		},
 		target(r) {
 			if (r.lt(1e4)) return new Decimal(0);
