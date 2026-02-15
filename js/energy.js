@@ -11,7 +11,7 @@ var energyUpgs = {
 		cost(x) { 
 			if (tmp.sup) x = x.sub(tmp.sup.upgs[3].eff||0).sub(tmp.sup.upgs[6].eff||0);
 			if (x.lte(0)) return new Decimal(1);
-			return Decimal.pow(2, x.sub(1).max(0).pow(0.2).plus(1)) 
+			return Decimal.pow(1.2, x.sub(1).max(0).pow(0.2).plus(1)) 
 		},
 		target(r) {
 			if (r.lt(1)) return new Decimal(0);
